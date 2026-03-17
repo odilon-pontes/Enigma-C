@@ -14,6 +14,11 @@ O **Enigma-C** é uma ferramenta de linha de comando desenvolvida em linguagem C
 - **Compilador:** GCC
 - **Bibliotecas Padrão:** `stdio.h`, `stdlib.h`, `string.h`, `time.h`
 
+## Capturas de Tela
+![sistema](public/sistema.png)
+![torre](public/vscode3.png)
+![torre](public/vscode2.png)
+![torre](public/vscode1.png)
 
 ## ⚙️ Como Compilar e Rodar
 Para compilar o projeto, certifique-se de ter o GCC instalado e execute:
