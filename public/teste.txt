@@ -1,1 +1,1 @@
-Essa mensagem é um teste para o sistema de de criptografia!
+Essa mensagem é um teste para o sistema de criptografia!
