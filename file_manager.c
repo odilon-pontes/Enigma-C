@@ -1,38 +1,40 @@
-#include<stdio.h>
-#include "file_manager.h"
+#include <stdio.h>
 #include <string.h>
+#include "file_manager.h"
 #include "crypto.h"
 
 #define TAM 50
-// getch()
 
-void removeNovaLinha(char *str) {
-    size_t len = strlen(str);
-    if (len > 0 && str[len-1] == '\n') {
-        str[len-1] = '\0';
-    }
-}
-void limparBuffer() {
+void limparBuffer(void) {
     int c;
     while ((c = getchar()) != '\n' && c != EOF);
 }
 
-void dadosCrypto() {
-    char nameArq1[TAM], senha[TAM], nomeArq2[TAM];
+void removeNovaLinha(char *str) {
+    size_t len = strlen(str);
+    if (len > 0 && str[len - 1] == '\n')
+        str[len - 1] = '\0';
+}
+
+void dadosCrypto(int modo) {
+    char arquivoEntrada[TAM], senha[TAM], arquivoSaida[TAM];
 
     limparBuffer();
 
-    printf("Nome do Arquivo: ");
-    fgets(nameArq1, sizeof(nameArq1), stdin);
-    removeNovaLinha(nameArq1);
+    printf("Nome do arquivo de entrada: ");
+    fgets(arquivoEntrada, sizeof(arquivoEntrada), stdin);
+    removeNovaLinha(arquivoEntrada);
 
     printf("Senha: ");
     fgets(senha, sizeof(senha), stdin);
     removeNovaLinha(senha);
 
-    printf("Nome do Arquivo Final: ");
-    fgets(nomeArq2, sizeof(nomeArq2), stdin);
-    removeNovaLinha(nomeArq2);
+    printf("Nome do arquivo de saida: ");
+    fgets(arquivoSaida, sizeof(arquivoSaida), stdin);
+    removeNovaLinha(arquivoSaida);
 
-    crypto(nameArq1, senha, nomeArq2);
+    /* XOR é simétrico: criptografar e descriptografar usam a mesma operação.
+       O parâmetro modo pode ser usado futuramente para validações distintas. */
+    (void)modo;
+    crypto(arquivoEntrada, senha, arquivoSaida);
 }

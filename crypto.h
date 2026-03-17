@@ -1,8 +1,6 @@
 #ifndef CRYPTO_H
 #define CRYPTO_H
 
-// Funções relacionadas a arquivos / criptografia
-int crypto(char *nome1, char *senha, char *nome2);
+int crypto(const char *entrada, const char *senha, const char *saida);
 
 #endif
-

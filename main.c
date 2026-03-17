@@ -1,33 +1,37 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<ctype.h>
+#include <stdio.h>
 #include "interface.h"
 #include "file_manager.h"
 
-int main() {
+int main(void) {
     exibirLogo();
-    int op=1;
-    while (op != 0) {
+
+    int op;
+    do {
         exibirMenu();
-        if(scanf("%d", &op) == 0){
+
+        if (scanf("%d", &op) != 1) {
+            limparBuffer();
             opcaoInvalida();
-            break;
+            continue;
         }
-        if (!op) break;
+
         switch (op) {
             case 1:
-                printf("Dados criptografia:\n\n");
-                dadosCrypto();
+                printf("\nDados para criptografia:\n\n");
+                dadosCrypto(MODO_CRIPTOGRAFAR);
                 break;
             case 2:
-                printf("Dados descriptografia:\n\n");
-                dadosCrypto();
+                printf("\nDados para descriptografia:\n\n");
+                dadosCrypto(MODO_DESCRIPTOGRAFAR);
+                break;
+            case 0:
                 break;
             default:
                 opcaoInvalida();
                 break;
         }
-    }
+    } while (op != 0);
+
     printf("\nTchau...\n");
     return 0;
 }
